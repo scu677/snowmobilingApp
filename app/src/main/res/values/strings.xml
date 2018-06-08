@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SnowMoApp</string>
+    //added string for map URL
+    <string name="topographic">https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer</string>
+    <string name="world_street_map">https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer</string>
+    <string name="newfoundland_topographic">https://gis.resourceinnovations.ca/gis/rest/services/Basemaps/Topographic/MapServer</string>
+    <string name="featured_shelter">https://gis.resourceinnovations.ca/gis/rest/services/Recreation/Snowmobiling/MapServer/0</string>
+    <string name="featured_roads">https://gis.resourceinnovations.ca/gis/rest/services/Recreation/Snowmobiling/MapServer/1</string>
+    <string name="featured_trails">https://gis.resourceinnovations.ca/gis/rest/services/Recreation/Snowmobiling/MapServer/2</string>
+    <string name="myRouteTask">http://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/NetworkAnalysisUtilities/GPServer</string>
+    <string name="all_layers">https://gis.resourceinnovations.ca/gis/rest/services/Recreation/Snowmobiling/MapServer</string>
+    <string name="locator">http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer</string>
+</resources>
