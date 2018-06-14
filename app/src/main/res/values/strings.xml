@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SnowMoApp</string>
+    <string name="app_name">Snowmobiling</string>
     //added string for map URL
     <string name="topographic">https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer</string>
     <string name="world_street_map">https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer</string>
@@ -10,4 +10,5 @@
     <string name="myRouteTask">http://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/NetworkAnalysisUtilities/GPServer</string>
     <string name="all_layers">https://gis.resourceinnovations.ca/gis/rest/services/Recreation/Snowmobiling/MapServer</string>
     <string name="locator">http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer</string>
+
 </resources>
