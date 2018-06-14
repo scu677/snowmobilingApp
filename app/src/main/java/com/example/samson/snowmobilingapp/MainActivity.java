@@ -1,31 +1,35 @@
+/* Copyright 2018 Resource Innovations Inc
+    Developed by: Samson Ugwuodo
+//MainActivity source code//
+Licensed under the Apache License, Version 2.0 (the "License");
+        you may not use this file except in compliance with the License.
+        You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.
+ */
+
 package com.example.samson.snowmobilingapp;
 
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
-import com.esri.arcgisruntime.ArcGISRuntimeEnvironment;
-import com.esri.arcgisruntime.arcgisservices.LabelDefinition;
 import com.esri.arcgisruntime.data.ServiceFeatureTable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
-
-import com.esri.arcgisruntime.geometry.GeometryEngine;
-import com.esri.arcgisruntime.geometry.Multipoint;
-import com.esri.arcgisruntime.geometry.Polygon;
 import com.esri.arcgisruntime.geometry.SpatialReference;
 import com.esri.arcgisruntime.layers.ArcGISTiledLayer;
 import com.esri.arcgisruntime.layers.FeatureLayer;
-import com.esri.arcgisruntime.loadable.LoadStatus;
 import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.Basemap;
 import com.esri.arcgisruntime.mapping.Viewpoint;
@@ -33,23 +37,12 @@ import com.esri.arcgisruntime.mapping.view.LocationDisplay;
 import com.esri.arcgisruntime.mapping.view.MapView;
 import com.esri.arcgisruntime.geometry.Envelope;
 import com.esri.arcgisruntime.geometry.Point;
-import com.esri.arcgisruntime.tasks.geocode.GeocodeParameters;
-import com.esri.arcgisruntime.tasks.geocode.LocatorAttribute;
-import com.esri.arcgisruntime.tasks.geocode.LocatorInfo;
-import com.esri.arcgisruntime.tasks.geocode.LocatorTask;
-import com.esri.arcgisruntime.util.ListChangedEvent;
 
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
     MapView myMapView;
-     LocationDisplay LD;
-
-
-    String runtimeLicenseKey = "runtimelite,1000,rudxxxxxxxxx,28-feb-2018,xxxxxxxxxxxxxxxxxxxx";
-    String smpNorthAmerica = "runtimesmpna,1000,rudxxxxxxxxx,13-mar-2018,xxxxxxxxxxxxxxxxxxxx";
+    LocationDisplay LD;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,14 +73,6 @@ public class MainActivity extends AppCompatActivity {
             map.getOperationalLayers().add(featureLayers0);
             myMapView.setMap(map);
 
-            List<String> extensions = new ArrayList<>();
-            extensions.add(smpNorthAmerica);
-             // Set the license for ArcGIS Runtime and the three extensions (areas)
-            ArcGISRuntimeEnvironment.setLicense(runtimeLicenseKey, extensions);
-            // Initialize the ArcGIS Runtime before any components are created
-            ArcGISRuntimeEnvironment.initialize();
-
-
         FloatingActionButton btn = (FloatingActionButton) findViewById(R.id.fab);
         btn.setOnClickListener(new View.OnClickListener() {
 
@@ -98,9 +83,6 @@ public class MainActivity extends AppCompatActivity {
                 LD.startAsync();
             }
         });
-
-
-
     }
 
 
