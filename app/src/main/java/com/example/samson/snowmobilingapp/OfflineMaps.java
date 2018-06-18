@@ -15,8 +15,16 @@ Licensed under the Apache License, Version 2.0 (the "License");
  */
 package com.example.samson.snowmobilingapp;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.esri.arcgisruntime.mapping.view.LocationDisplay;
+import com.esri.arcgisruntime.security.DefaultAuthenticationChallengeHandler;
+import com.esri.arcgisruntime.security.OAuthConfiguration;
 
 
 public class OfflineMaps extends AppCompatActivity{
@@ -26,5 +34,19 @@ public class OfflineMaps extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.offline_maps);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        Button btn = (Button) findViewById(R.id.offline_button);
+        btn.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Toast.makeText(getBaseContext(), "Download offline map", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
     }
+
+
+
 }

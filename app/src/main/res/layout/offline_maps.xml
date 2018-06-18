@@ -9,13 +9,13 @@
     tools:context="com.example.samson.snowmobilingapp.OfflineMaps">
 
     <Button
-        android:id="@+id/offline"
+        android:id="@+id/offline_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:text="Download | Offline | Map"
+        android:text="Download  Offline  Map"
         android:textColor="@color/colorBackground"
         android:textSize="16dp"
         android:textStyle="bold" />
