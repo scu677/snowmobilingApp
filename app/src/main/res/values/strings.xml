@@ -10,6 +10,6 @@
     <string name="all_layers">https://gis.resourceinnovations.ca/gis/rest/services/Recreation/Snowmobiling/MapServer</string>
     <string name="locator">http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer</string>
     <string name="close">Close</string>
-    <string name="cont">Continue</string>
+    <string name="cont">Offline</string>
 
 </resources>

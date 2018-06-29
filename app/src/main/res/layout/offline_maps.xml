@@ -8,16 +8,58 @@
     android:background="@color/colorBackground"
     tools:context="com.example.samson.snowmobilingapp.OfflineMaps">
 
+    <com.esri.arcgisruntime.mapping.view.MapView
+        android:id="@+id/mapOffline"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.esri.arcgisruntime.mapping.view.MapView>
+
+
     <Button
         android:id="@+id/offline_button"
-        android:layout_width="match_parent"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_gravity="bottom"
-        android:text="Download  Offline  Map"
+        android:background="@color/colorAccent"
+        android:text="Offline Map"
         android:textColor="@color/colorBackground"
         android:textSize="16dp"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/download_button"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="end"
+        android:background="@color/colorAccent"
+        android:text="Download Map"
+        android:textColor="@color/colorBackground"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_centerInParent="true"
+        android:background="@drawable/background" />
+
 
 </RelativeLayout>
