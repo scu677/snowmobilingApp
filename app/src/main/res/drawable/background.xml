@@ -5,12 +5,8 @@
         android:left="5dp"
         android:right="5dp"
         android:top="5dp"/>
-    <corners
-        android:bottomLeftRadius="5dp"
-        android:bottomRightRadius="5dp"
-        android:topLeftRadius="5dp"
-        android:topRightRadius="5dp" />
-    <solid android:color="@android:color/white"/>
-    <stroke android:width="3dp"
-        android:color="@color/colorPrimary"/>
+    <solid android:color="@android:color/transparent"/>
+    <stroke
+        android:width="5dp"
+        android:color="@android:drawable/screen_background_dark_transparent"/>
 </shape>

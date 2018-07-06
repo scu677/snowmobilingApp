@@ -18,10 +18,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.media.MediaActionSound;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -33,7 +29,6 @@ import android.view.MenuItem;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
-
 import com.esri.arcgisruntime.geometry.SpatialReference;
 import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.Viewpoint;
@@ -45,7 +40,7 @@ import com.esri.arcgisruntime.portal.Portal;
 import com.esri.arcgisruntime.portal.PortalItem;
 
 
-class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     private MapView myMapView;
     private LocationDisplay LD;
     private static ArcGISMap map;
@@ -55,6 +50,8 @@ class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         myMapView = findViewById(R.id.mapView);
+        myMapView.getCallout();
+
 
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager.getNetworkInfo(connectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED ||
@@ -63,7 +60,6 @@ class MainActivity extends AppCompatActivity {
             PortalItem portalItem = new PortalItem(portal, "b53f696fea544843b1c139a3c1b252ef");
             map = new ArcGISMap(portalItem);
             myMapView.setMap(map);
-
             InitialExtend();
 
             //download offline map//
@@ -95,11 +91,11 @@ class MainActivity extends AppCompatActivity {
     }
 
     public static void InitialExtend(){
-
         Point leftPoint = new Point(-6641791.193399999, 5853988.327799998, SpatialReference.create(3857));
         Point rightPoint = new Point(-5808352.0265, 6772993.915799998, SpatialReference.create(3857));
         Envelope initialExtent = new Envelope(leftPoint, rightPoint);
         Viewpoint vp = new Viewpoint(initialExtent);
+        //vp.getTargetGeometry();
         map.setInitialViewpoint(vp);
         map.setMaxScale(20000);
         map.setMinScale(5800000);
@@ -142,7 +138,6 @@ class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
@@ -153,12 +148,10 @@ class MainActivity extends AppCompatActivity {
                 this.startActivity(intent1);
                 //Toast.makeText(getBaseContext(), "Download offline map", Toast.LENGTH_SHORT).show();
                 return true;
-
                 default:return super.onOptionsItemSelected(item);
 
         }
 
     }
-
 
 }

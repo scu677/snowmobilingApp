@@ -19,7 +19,6 @@
 
     </com.esri.arcgisruntime.mapping.view.MapView>
 
-
     <Button
         android:id="@+id/offline_button"
         android:layout_width="190dp"
@@ -46,20 +45,22 @@
         android:text="Download Map"
         android:textColor="@color/colorBackground"
         android:textSize="16dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <View
+        android:id="@+id/dimBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/dimview"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_centerInParent="true"
-        android:background="@drawable/background" />
-
+        <ImageView
+            android:layout_width="240dp"
+            android:layout_height="380dp"
+            android:id="@+id/imageView"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop"
+            android:background="@drawable/background"/>
 
 </RelativeLayout>
