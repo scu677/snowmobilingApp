@@ -47,17 +47,11 @@
         android:textSize="16dp"
         android:textStyle="bold"/>
 
-    <View
-        android:id="@+id/dimBackground"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/dimview"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
 
         <ImageView
             android:layout_width="240dp"
-            android:layout_height="380dp"
+            android:layout_height="240dp"
             android:id="@+id/imageView"
             android:layout_centerInParent="true"
             android:scaleType="centerCrop"

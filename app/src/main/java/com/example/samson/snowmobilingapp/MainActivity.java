@@ -30,6 +30,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 import com.esri.arcgisruntime.geometry.SpatialReference;
+import com.esri.arcgisruntime.geometry.SpatialReferences;
 import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.Viewpoint;
 import com.esri.arcgisruntime.mapping.view.LocationDisplay;
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
     public static void InitialExtend(){
         Point leftPoint = new Point(-6641791.193399999, 5853988.327799998, SpatialReference.create(3857));
         Point rightPoint = new Point(-5808352.0265, 6772993.915799998, SpatialReference.create(3857));
+
         Envelope initialExtent = new Envelope(leftPoint, rightPoint);
         Viewpoint vp = new Viewpoint(initialExtent);
         //vp.getTargetGeometry();
