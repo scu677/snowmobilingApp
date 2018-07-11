@@ -97,45 +97,32 @@ public class OfflineMaps extends AppCompatActivity {
             if (offlineMapTask.getLoadStatus() == LoadStatus.FAILED_TO_LOAD) {
 
                 showMessage("offlineTask failed");
-                offlineMapTask.getLoadError();}
-
-            // } else {
-            //GenerateParameters();
-            final OfflineMapTask offlineMapTask = new OfflineMapTask(map);
-            final ListenableFuture<GenerateOfflineMapParameters> ParameterFuture = offlineMapTask.createDefaultGenerateOfflineMapParametersAsync(areaOfInterest);
-
-
-            try {
-                final GenerateOfflineMapParameters mapParameters = ParameterFuture.get();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
+                offlineMapTask.getLoadError();
+             } else {
+                GenerateParameters();
+                //CheckCapability();
             }
-
-            //CheckCapability();
-            // }
             OfflineButton();
             DownloadButton();
+
         }
 
-        private GenerateOfflineMapParameters mapParameters;
+    GenerateOfflineMapParameters mapParameters;
 
 
-    public void GenerateParameters() throws ExecutionException, InterruptedException {
+    public void GenerateParameters(){
         final OfflineMapTask offlineMapTask = new OfflineMapTask(map);
         final ListenableFuture<GenerateOfflineMapParameters> ParameterFuture = offlineMapTask.createDefaultGenerateOfflineMapParametersAsync(areaOfInterest);
         showMessage("Generating done!");
-        GenerateOfflineMapParameters mapParameters = ParameterFuture.get();
-        /*ParameterFuture.addDoneListener(new Runnable(){
 
-           /* @Override
+        ParameterFuture.addDoneListener(new Runnable(){
+
+            @Override
             public void run(){
 
                 try {
                     Thread.sleep(5000);
                     mapParameters = ParameterFuture.get();
-
                     mapParameters.setMaxScale(5000);
                     mapParameters.setMinScale(0);
                     mapParameters.setIncludeBasemap(true);
@@ -149,8 +136,8 @@ public class OfflineMaps extends AppCompatActivity {
 
                 } catch (Exception e) {
                     e.getMessage();
-                }*/
-        //}});
+                }
+        }});
     }
 
 
@@ -211,17 +198,11 @@ public class OfflineMaps extends AppCompatActivity {
         final OfflineMapTask offlineMapTask = new OfflineMapTask(map);
         String mExportPath = String.valueOf(Environment.getExternalStorageDirectory()) + File.separator + "New";
         showMessage(mExportPath);
-
         //downloadButton.setVisibility(View.VISIBLE);
         // Create and start a job to generate the offline map
 
         final GenerateOfflineMapJob generateOfflineJob = offlineMapTask.generateOfflineMap(mapParameters, mExportPath);
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         //Show that job started
         //final ProgressBar progressBarOffline = (ProgressBar) findViewById(R.id.progressBar);
         //progressBarOffline.setVisibility(View.VISIBLE);
@@ -329,7 +310,7 @@ public class OfflineMaps extends AppCompatActivity {
         });
     }
     public void DownloadButton() {
-        //setup export tiles button
+        //setup export tiles button 
         downloadButton = (Button) findViewById(R.id.download_button);
         downloadButton.setOnClickListener(new View.OnClickListener() {
             //@Override
@@ -342,13 +323,12 @@ public class OfflineMaps extends AppCompatActivity {
     }
 
 
-
     @Override
-  protected void onPause(){
+    protected void onPause(){
       myMapView.pause();
       super.onPause();
 
-  }
+    }
 
     @Override
     protected void onResume(){

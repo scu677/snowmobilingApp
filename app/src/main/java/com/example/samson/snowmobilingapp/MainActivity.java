@@ -29,8 +29,8 @@ import android.view.MenuItem;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
+
 import com.esri.arcgisruntime.geometry.SpatialReference;
-import com.esri.arcgisruntime.geometry.SpatialReferences;
 import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.Viewpoint;
 import com.esri.arcgisruntime.mapping.view.LocationDisplay;
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private MapView myMapView;
     private LocationDisplay LD;
     private static ArcGISMap map;
+    private final String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
             }); alertDialog.show();alertDialog.create();
         }
     }
+
 
     public static void InitialExtend(){
         Point leftPoint = new Point(-6641791.193399999, 5853988.327799998, SpatialReference.create(3857));
