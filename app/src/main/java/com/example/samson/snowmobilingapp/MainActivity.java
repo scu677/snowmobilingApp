@@ -42,6 +42,7 @@ import com.esri.arcgisruntime.portal.PortalItem;
 
 
 public class MainActivity extends AppCompatActivity {
+
     private MapView myMapView;
     private LocationDisplay LD;
     private static ArcGISMap map;

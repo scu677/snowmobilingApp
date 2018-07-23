@@ -51,10 +51,11 @@ import com.esri.arcgisruntime.geometry.*;
 import java.io.ByteArrayOutputStream;
 import java.util.concurrent.ExecutionException;
 
-import static com.example.samson.snowmobilingapp.MainActivity.InitialExtend;
+//import static com.example.samson.snowmobilingapp.MainActivity.InitialExtend;
 
 
 public class OfflineMaps extends AppCompatActivity {
+    MainActivity mapy = new MainActivity();
     // private Geometry areaOfInterest;
     private MapView myMapView;
     private Button downloadButton;
@@ -87,7 +88,7 @@ public class OfflineMaps extends AppCompatActivity {
             // ArcGISMap map = new ArcGISMap(myPortalItem);
             myMapView = findViewById(R.id.mapOffline);
             myMapView.setMap(map);
-            InitialExtend();
+            mapy.InitialExtend();
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
             //GenerateOfflineMapParameters mapParameters = null;
@@ -113,7 +114,6 @@ public class OfflineMaps extends AppCompatActivity {
     public void GenerateParameters(){
         final OfflineMapTask offlineMapTask = new OfflineMapTask(map);
         final ListenableFuture<GenerateOfflineMapParameters> ParameterFuture = offlineMapTask.createDefaultGenerateOfflineMapParametersAsync(areaOfInterest);
-        showMessage("Generating done!");
 
         ParameterFuture.addDoneListener(new Runnable(){
 
@@ -121,7 +121,7 @@ public class OfflineMaps extends AppCompatActivity {
             public void run(){
 
                 try {
-                    Thread.sleep(5000);
+                    //Thread.sleep(5000);
                     mapParameters = ParameterFuture.get();
                     mapParameters.setMaxScale(5000);
                     mapParameters.setMinScale(0);
