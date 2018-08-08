@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class WelcomeHome extends Activity {
-    private static int SPLASH_TIME_OUT=4000;
+    private static int SPLASH_TIME_OUT=1000;
 
     @Override
     protected void onCreate(Bundle icicle) {

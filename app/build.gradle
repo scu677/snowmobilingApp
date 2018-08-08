@@ -1,22 +1,22 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.samson.snowmobilingapp"
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        renderscriptTargetApi 19
-        renderscriptSupportModeEnabled true
+        //renderscriptTargetApi 19
+        //renderscriptSupportModeEnabled true
     }
-    packagingOptions {
-        exclude 'META-INF/LGPL2.1'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/NOTICE'
-    }
+   // packagingOptions {
+       // exclude 'META-INF/LGPL2.1'
+       // exclude 'META-INF/LICENSE'
+       // exclude 'META-INF/NOTICE'
+    //}
     buildTypes {
         release {
             minifyEnabled false
@@ -28,16 +28,25 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 }
 
 dependencies {
-    implementation 'com.esri.arcgisruntime:arcgis-android:100.2.1'
+   // implementation 'com.esri.arcgisruntime:arcgis-android:100.2.1'
+    implementation ('com.mapbox.mapboxsdk:mapbox-android-sdk:6.3.0@aar'){ transitive = true }
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'com.android.support:mediarouter-v7:26.1.0'
-    compile 'com.android.support:design:26.1.0'
+    implementation 'com.android.support:mediarouter-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:support-vector-drawable:27.1.1'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation:0.16.0'
+    implementation ('com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.16.0'){ transitive = true }
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-offline:0.2.0'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-locationlayer:0.7.1'
+
 }

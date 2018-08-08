@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorBackground"
-    tools:context="com.example.samson.snowmobilingapp.OfflineMaps">
-
-    <com.esri.arcgisruntime.mapping.view.MapView
-        android:id="@+id/mapOffline"
-        android:layout_width="match_parent"
+    tools:context="com.example.samson.snowmobilingapp.Regions">
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/mapView1"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        mapbox:mapbox_styleUrl="mapbox://styles/ricketts04/cjjynoyxt0uuu2rkhswv6hd5s">
+    </com.mapbox.mapboxsdk.maps.MapView>
 
-    </com.esri.arcgisruntime.mapping.view.MapView>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
 
     <Button
-        android:id="@+id/offline_button"
+        android:id="@+id/list_button"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -47,14 +48,5 @@
         android:textSize="16dp"
         android:textStyle="bold"/>
 
-
-
-        <ImageView
-            android:layout_width="240dp"
-            android:layout_height="240dp"
-            android:id="@+id/imageView"
-            android:layout_centerInParent="true"
-            android:scaleType="centerCrop"
-            android:background="@drawable/background"/>
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
+
 <resources>
-    <string name="app_name">Snowmobile</string>
+    <string name="app_name">SNOWMOBILE</string>
     <string name="topographic">https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer</string>
     <string name="world_street_map">https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer</string>
     <string name="newfoundland_topographic">https://gis.resourceinnovations.ca/gis/rest/services/Basemaps/Topographic/MapServer</string>
@@ -11,6 +12,26 @@
     <string name="locator">http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer</string>
     <string name="close">Close</string>
     <string name="cont">Offline</string>
+
+
+    <string name="mapbox_access_token">pk.eyJ1Ijoicmlja2V0dHMwNCIsImEiOiJjamp5bGJrdWgwMGRjM2twNTEwNG10aGZuIn0.fUtPOX0dcM7ANHCcstckLw</string>
+    <string name="user_location_permission_explanation">You are here!</string>
+    <string name="user_location_permission_not_granted">Permission denied!</string>
+    <string name="simple_offline_end_progress_success">Download Completed</string>
+    <string name="basic_offline_deleted_toast">Offline Map Deleted</string>
+    <string name="dialog_title">Download Region</string>
+    <string name="dialog_message">Enter a name for the selected region</string>
+    <string name="dialog_positive_button">Download</string>
+    <string name="dialog_toast">No region selected</string>
+    <string name="toast_no_regions_yet">No Saved Map !</string>
+    <string name="navigate_title">Offline Maps</string>
+    <string name="navigate_positive_button">Open</string>
+    <string name="navigate_neutral_button_title">Delete</string>
+    <string name="toast_region_deleted">Region Deleted</string>
+    <string name="navigate_negative_button_title">Close</string>
+    <string name="region_name">" "</string>
+    <string name="set_region_name_hint">City</string>
+    <string name="dialog_negative_button">Cancel</string>
 
 
 </resources>

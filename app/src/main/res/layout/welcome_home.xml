@@ -3,16 +3,24 @@
     android:orientation="vertical" android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <ImageView android:id="@+id/splashscreen"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:src="@mipmap/ic_launcher_ri_round"
-        android:layout_gravity="center"/>
+    <ImageView
+        android:id="@+id/splashscreen"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"
+        android:src="@mipmap/ic_launcher_ri_round" />
 
-    <TextView android:layout_width="fill_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Snowmobiling App"
-        android:textColor="#ff6666"
-        android:textSize="10dp"/>
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="SNOWMOBILING"
+        android:textColorHighlight="@android:color/black"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/cardview_shadow_end_color"
+        android:textSize="22sp"
+        android:textStyle="bold"/>
 
 </LinearLayout>
