@@ -67,6 +67,7 @@ import com.mapbox.mapboxsdk.offline.OfflineRegionStatus;
 import com.mapbox.mapboxsdk.offline.OfflineTilePyramidRegionDefinition;
 import com.mapbox.mapboxsdk.plugins.locationlayer.LocationLayerPlugin;
 import com.mapbox.mapboxsdk.plugins.locationlayer.modes.RenderMode;
+import com.mapbox.services.android.navigation.ui.v5.NavigationLauncher;
 import com.mapbox.services.android.navigation.ui.v5.NavigationLauncherOptions;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineListener;
@@ -113,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
     private Point destinationPosition;
     private DirectionsRoute currentRoute;
     private NavigationMapRoute navigationMapRoute;
+    private FloatingActionButton floating;
 
 
     @Override
@@ -129,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
                 map = mapboxMap;
                 FindLocation();
                 enableMyLocationPlugin();
+                StartRoute();
                 //Add maker to locat
                 originCoord = new LatLng(originLocation.getLatitude(), originLocation.getLongitude());
                 mapboxMap.addOnMapClickListener(new MapboxMap.OnMapClickListener() {
@@ -152,8 +155,8 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
 
                     ;
                 });
-
-
+                floating.setEnabled(true);
+                floating.setBackgroundResource(R.color.colorAccent);
 
                 // mapboxMap.getUiSettings().setCompassEnabled(true);
                 //mapboxMap.getUiSettings().setRotateGesturesEnabled(true);
@@ -196,6 +199,7 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
 
     }
 
+    //GET ROUTE FROM ORIGIN TO DESTINATION MAKER
     private void getRoute(Point origin, Point destination) {
         NavigationRoute.builder(this)
                 .accessToken(Mapbox.getAccessToken())
@@ -253,6 +257,26 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
             //recreate();
         }
     });
+   }
+
+
+   public void StartRoute(){
+
+
+        FloatingActionButton floating = (FloatingActionButton) findViewById(R.id.fab2);
+        floating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean simulateRoute = false;
+                NavigationLauncherOptions options = NavigationLauncherOptions.builder()
+                        .directionsRoute(currentRoute)
+                        .shouldSimulateRoute(simulateRoute)
+                        .build();
+
+                // Call this method with Context from within an Activity
+                NavigationLauncher.startNavigation(MainActivity.this, options);
+            }
+        });
    }
 
     @SuppressWarnings({"MissingPermission"})
@@ -642,7 +666,7 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
         regionSelected = 0;
 
       // final CharSequence[] regions = new CharSequence[2];
-        final CharSequence[] items = new CharSequence[]{"Corner Brook", "Gander"};
+        final CharSequence[] items = new CharSequence[]{"St.John's"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);//ERROR ShowDialog cannot be resolved to a type
         builder.setTitle("List of Regions");
