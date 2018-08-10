@@ -17,15 +17,9 @@ package com.example.samson.snowmobilingapp;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.LocationListener;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
@@ -36,9 +30,7 @@ import android.view.MenuItem;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -125,6 +117,8 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
         myMapView = findViewById(R.id.mapView);
         myMapView.onCreate(savedInstanceState);
         //myMapView.getMapAsync(this);
+
+        //On map ready call back: to load map
         myMapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(final MapboxMap mapboxMap) {
@@ -132,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
                 FindLocation();
                 enableMyLocationPlugin();
                 StartRoute();
-                //Add maker to locat
+                //Add maker to clicked point and get route fromm the original location to destination point.
                 originCoord = new LatLng(originLocation.getLatitude(), originLocation.getLongitude());
                 mapboxMap.addOnMapClickListener(new MapboxMap.OnMapClickListener() {
                     @Override
@@ -151,10 +145,9 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
                         getRoute(originPosition, destinationPosition);
                     }
 
-
-
                     ;
                 });
+
                 floating.setEnabled(true);
                 floating.setBackgroundResource(R.color.colorAccent);
 
@@ -173,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
         // Set up the offlineManager
         offlineManager = OfflineManager.getInstance(this);
 
-
+        //Bottom navigation menu list and thier actions
         bottomNavigationView = findViewById(R.id.bottomNavigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -239,7 +232,7 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
 
 
 
-
+    //Floating action button to get device current location
     public void FindLocation() {
         FloatingActionButton floatButton = (FloatingActionButton) findViewById(R.id.fab);
         floatButton.setOnClickListener(new View.OnClickListener() {
@@ -259,9 +252,8 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
     });
    }
 
-
+   //Floating action button to start routing form current location to destination
    public void StartRoute(){
-
 
         FloatingActionButton floating = (FloatingActionButton) findViewById(R.id.fab2);
         floating.setOnClickListener(new View.OnClickListener() {
@@ -279,6 +271,7 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
         });
    }
 
+   //location plugin method that initialize the location service
     @SuppressWarnings({"MissingPermission"})
     private void enableMyLocationPlugin() {
         if (PermissionsManager.areLocationPermissionsGranted(this)) {
@@ -297,6 +290,7 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
 
     }
 
+    //Location engine configuration
     @SuppressWarnings({"MissionPermisson"})
     private void initializeLocationEngine() {
         LocationEngineProvider locationEngineProvider = new LocationEngineProvider(this);
@@ -368,7 +362,6 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
 
 
     //OFFLINE MAPS REGIONS AND DOWNLOAD
-
     private void downloadRegionDialog() {
         // Set up download interaction. Display a dialog
         // when the user clicks download button and require
@@ -409,7 +402,7 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
     }
 
 
-    //DOWNLOAD REGION
+    //DOWNLOAD THE CURRENT REGION
     private void downloadRegion(final String regionName) {
         // Define offline region parameters, including bounds,
         // min/max zoom, and metadata
@@ -456,8 +449,7 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
         });
     }
 
-    //LUNCH DOWNLOAD
-
+    //LUNCH DOWNLOAD PROCESS
     private void launchDownload() {
         // Set up an observer to handle download progress and
         // notify the user when the region is finished downloading
@@ -499,6 +491,7 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
         offlineRegion.setDownloadState(OfflineRegion.STATE_ACTIVE);
     }
 
+        //GET LIST OF DOWNLOADED REGIONS
         private void downloadedRegionList(){
         // Build a region list when the user clicks the list button
 
@@ -605,6 +598,8 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
         });
     }
 
+
+    //GET THE REGION NAMES FORM THE METADATA USING JSON
     @SuppressLint("StringFormatInvalid")
     private String getRegionName(OfflineRegion offlineRegion) {
         // Get the region name from the offline region metadata
@@ -666,7 +661,12 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
         regionSelected = 0;
 
       // final CharSequence[] regions = new CharSequence[2];
+
         final CharSequence[] items = new CharSequence[]{"St.John's"};
+       // ArrayList<String> list = new ArrayList<String>();
+       // list.add(getRegion());
+
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);//ERROR ShowDialog cannot be resolved to a type
         builder.setTitle("List of Regions");
@@ -702,14 +702,16 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
         alert.show();
     }
 
+
+
     //Methods for list of region
     public void selectRegion(){
         //offlineManager = OfflineManager.getInstance(MainActivity.this);
        // Create a bounding box for the offline region
         LatLngBounds bounds = new LatLngBounds.Builder()
                 .include(new LatLng(47.56494, -52.70931)) // Northeast
-         .include(new LatLng(47.56494, -52.70931)) // Southwest
-         .build();
+                .include(new LatLng(47.56494, -52.70931)) // Southwest
+                .build();
 
        // Define the offline region
         OfflineTilePyramidRegionDefinition definition = new OfflineTilePyramidRegionDefinition(
