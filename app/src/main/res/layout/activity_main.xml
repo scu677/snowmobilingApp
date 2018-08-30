@@ -44,9 +44,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right|end"
         android:layout_margin="16dp"
-        mapbox:layout_anchor="@+id/fab"
         android:src="@drawable/ic_maneuver_arrive_right"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        mapbox:layout_anchor="@+id/fab"
+        mapbox:layout_anchorGravity="left|top" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomNavigation"

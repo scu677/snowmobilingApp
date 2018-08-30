@@ -140,7 +140,6 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
                 floating.setBackgroundResource(R.color.colorAccent);
             }
         });
-
         /*
          * Bottom navigation menu
         */
@@ -164,7 +163,6 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
         });
 
     }
-
     /*
      * Get route from origin to destination maker
     */
@@ -330,8 +328,6 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
             locationEngine.removeLocationEngineListener(this);
         }
     }
-
-
     /*
      * Create a dialogue window
      * to select map region and initialize download method
@@ -421,7 +417,6 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
             }
         });
     }
-
     /*
      * Lunch download process
     */
@@ -465,7 +460,6 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
         // Change the region state
         offlineRegion.setDownloadState(OfflineRegion.STATE_ACTIVE);
     }
-
         /*
          * Get list of downloaded regions
          */
@@ -630,19 +624,14 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
         Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
     }
 
-
-
-    //Dialog view for featured regions
+    /*
+     * Started a dialog view for featured regions
+     * this will list all prepared region with bounds
+     * and set for viewing and offline download
+    */
     private void AlertDialogView() {
         regionSelected = 0;
-
-      // final CharSequence[] regions = new CharSequence[2];
-
         final CharSequence[] items = new CharSequence[]{"St.John's"};
-       // ArrayList<String> list = new ArrayList<String>();
-       // list.add(getRegion());
-
-
 
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);//ERROR ShowDialog cannot be resolved to a type
         builder.setTitle("List of Regions");
@@ -678,12 +667,11 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
         alert.show();
     }
 
-
-
-    //Methods for list of region
+    /*
+     *Method for list of pre planned region
+    */
     public void selectRegion(){
-        //offlineManager = OfflineManager.getInstance(MainActivity.this);
-       // Create a bounding box for the offline region
+
         LatLngBounds bounds = new LatLngBounds.Builder()
                 .include(new LatLng(47.56494, -52.70931)) // Northeast
                 .include(new LatLng(47.56494, -52.70931)) // Southwest
@@ -709,6 +697,32 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
 
         // Move camera to new position
         map.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+    }
+
+    /*
+     * TOOL BAR MENU ITEMS CONFIGURATIONS
+     * to be added in future needed
+    */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        switch (item.getItemId()){
+            //case R.id.offline:
+            //Intent intent1 = new Intent(MainActivity.this, Regions.class);
+            //this.startActivity(intent1);
+            //Toast.makeText(getBaseContext(), "Download offline map", Toast.LENGTH_SHORT).show();
+            // return true;
+            default:return super.onOptionsItemSelected(item);
+        }
 
     }
 
@@ -745,29 +759,6 @@ public class MainActivity extends AppCompatActivity implements LocationEngineLis
         if (locationEngine != null) {
             locationEngine.deactivate();
         }
-    }
-
-    //TOOL BAR MENU ITEMS CONFIGURATIONS
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        super.onOptionsItemSelected(item);
-
-        switch (item.getItemId()){
-            //case R.id.offline:
-                //Intent intent1 = new Intent(MainActivity.this, Regions.class);
-                //this.startActivity(intent1);
-                //Toast.makeText(getBaseContext(), "Download offline map", Toast.LENGTH_SHORT).show();
-               // return true;
-                default:return super.onOptionsItemSelected(item);
-        }
-
     }
 
     @Override
