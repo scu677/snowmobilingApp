@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         mapbox:layout_anchor="@+id/fab"
         mapbox:layout_anchorGravity="top|center"
-        mapbox:mapbox_styleUrl="mapbox://styles/ricketts04/cjjynoyxt0uuu2rkhswv6hd5s">
+        mapbox:mapbox_styleUrl="Map URL should be here">
 
     </com.mapbox.mapboxsdk.maps.MapView>
 
